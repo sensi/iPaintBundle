@@ -1,0 +1,3 @@
+m3ipaint:
+    pattern:  /
+    defaults: { _controller: M3iPaintBundle:Editor:draw }

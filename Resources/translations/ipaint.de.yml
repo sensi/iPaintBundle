@@ -1,0 +1,20 @@
+Ruler: Lineal
+Width: Breite
+Height: Höhe
+Gridlines: Raster
+Colors & Opacity: Farben & Transparenz
+Size: Größe
+Background: Hintergrund
+Menu: Datei
+Tools: Werkzeuge
+
+# Werkzeuge
+Line: Linie
+Curve: Kurve
+Oval: Ovaler Kreis
+Rectangle: Rechteck
+Rounded rectangle: Abgerundetes Rechteck
+Polyline: Offenes Rechteck
+Polygon: Polygon
+Cardinal-spline: Offener Kreis
+Heart: Herz

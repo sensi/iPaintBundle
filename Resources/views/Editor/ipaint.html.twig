@@ -1,0 +1,344 @@
+{% extends "M3iPaintBundle:Editor:layout.html.twig" %}
+
+{% block ipaint_frame %}
+	<div id="ipaint_frame">
+	      
+	      <div id="toolbar_close" class="expand"></div>
+	      <div id="tool_bar">
+	         <div id="tb_menu">
+	            <div class="btnicon new-image" title="{% trans with {} from "ipaint"  %}Create new image{% endtrans %}"></div>
+	            <div class="btnicon save-image" title="{% trans with {} from "ipaint"  %}Save image{% endtrans %}"></div>
+	            <div class="btnicon email-image" title="{% trans with {} from "ipaint"  %}Share image{% endtrans %}"></div>
+	            <div class="btnicon clear-image" title="{% trans with {} from "ipaint"  %}Clear image{% endtrans %}"></div>
+	            <div class="btnicon image-gallery" title="{% trans with {} from "ipaint"  %}Load image from gallery{% endtrans %}"></div>
+	            <div class="btnicon image-url" title="{% trans with {} from "ipaint"  %}Load image from url{% endtrans %}"></div>
+	            <div class="tb_title">{% trans with {} from "ipaint" %}Menu{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	      
+	         <div id="tb_canvas">
+	            
+	            <div id="canvas_bg_1">
+	               <div title="White canvas" name="white"  class="canvas_bg button_19x18 canvas_bg_white selected"></div>
+	               <div title="Gray canvas" name="gray"    class="canvas_bg button_19x18 canvas_bg_gray"></div>
+	               <div title="Black canvas" name="black"  class="canvas_bg button_19x18 canvas_bg_black"></div>
+	            </div>
+	            <div id="canvas_bg_2">
+	               <div title="Transparent canvas" name="transparent"  class="canvas_bg button_19x18 canvas_bg_transparent"></div>
+	               <div title="Background color canvas" name="background"  class="canvas_bg button_19x18 canvas_bg_background"></div>
+	            </div>
+	            <div class="tb_title">{% trans %}Background{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         
+	         <div id="tb_tool">
+	            <div id="tools_1">
+	               <div title="Draw a free form line" name="pencil"  class="canvas_tool_shape button_19x18 tool_pencil selected"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Fill with color" name="bucket_solid"  class="canvas_tool_shape button_19x18 tool_bucket_solid" refer="bucket_selection"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Insert text" name="font"    class="canvas_tool_shape button_19x18 tool_font"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Erase part of the picture" name="eraser"  class="canvas_tool_shape button_19x18 tool_eraser"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Color picker" name="eye_dropper" class="canvas_tool_shape button_19x18 tool_eye_dropper"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Magnifier" name="zoom_glass" class="canvas_tool_shape button_19x18 tool_glasses"></div>
+	            </div>
+	            <div id="tools_2">
+	               <div title="Rectangular selection" name="select_box" class="canvas_tool_shape button_19x18 tool_select_box" refer="tools_selection"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Simple brush" name="simple_brush" class="canvas_tool_shape button_19x18 tool_brush_simple" refer="brush_selection"></div>
+	               <div class="tool_v_bar"></div>
+	               <!--
+	               <div title="Select all canvas" name="select_all" class="button_19x18 tool_select_all"></div>
+	               <div class="tool_v_bar"></div>
+	               -->
+	               <div title="Cut selection" name="cut" class="canvas_tool_shape button_19x18 tool_cut disabled"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Crop canvas" name="crop" class="canvas_tool_shape button_19x18 tool_crop disabled"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Resize" name="resize" class="canvas_tool_shape button_19x18 tool_resize disabled"></div>
+	               <div class="tool_v_bar"></div>
+	               <div title="Rotate" name="rotate" class="canvas_tool_shape button_19x18 tool_rotate disabled"></div>
+	            </div>
+	            <div class="tb_title">{% trans with {} from "ipaint"  %}Tools{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         
+	         <div id="tb_font" class="font_panel" style="display:none;width:0px;">
+               <select class="font_family" name="font_family">
+                  <option value="Arial">Arial</option>
+                  <option value="georgia">Georgia</option>
+                  <option value="verdana">Verdana</option>
+                  <option value="ms sans serif">MS Sans Serif</option>
+                  <option value="tahoma">Tahoma</option>
+                  <option value="courier">Courier</option>
+                  <option value="arial black">Arial Black</option>
+                  <option value="arial narrow">Arial Narrow</option>
+                  <option value="helvetice">Helvetica</option>
+                </select>
+                <select class="font_size" name="font_size">
+                  <option value="8px">8 px</option>
+                  <option value="9px">9 px</option>
+                  <option value="10px">10 px</option>
+                  <option value="11px">11 px</option>
+                  <option value="12px">12 px</option>
+                  <option value="13px">13 px</option>
+                  <option value="14px">14 px</option>
+                  <option value="15px">15 px</option>
+                  <option value="16px">16 px</option>
+                  <option value="18px">18 px</option>
+                  <option value="20px">20 px</option>
+                  <option value="22px">22 px</option>
+                  <option value="24px">24 px</option>
+                  <option value="26px">26 px</option>
+                  <option value="28px">28 px</option>
+                  <option value="30px">30 px</option>
+                  <option value="36px">36 px</option>
+                  <option value="48px">48 px</option>
+                  <option value="72px">72 px</option>
+                </select>
+                <div class='font_options'>
+                  <div name="bold" title="Bold" class="font_option button_19x18 font_bold"></div>
+                  <div name="italic" title="Italic" class="font_option button_19x18 font_italic"></div>
+                  <!--
+                  <div name="underline" title="Underline" class="font_option button_19x18 font_underline"></div>
+                  <div name="strikethrough" title="Strikethrough" class="font_option button_19x18 font_strikethrough"></div>
+                  -->
+                </div>
+	            <div class="tb_title">{% trans with {} from "ipaint"  %}Font{% endtrans %}</div>
+            </div>	            
+	         <div class="font_panel tb_v_bar" style="display:none;"></div>
+	         
+	         <div id="tb_shape">
+	            <div id="tb_shape_container">
+		            <div name="line"                        title="{% trans with {} from "ipaint"  %}Line{% endtrans %}"                        class="canvas_tool_shape button_19x18 shape_line         "></div>
+		            <div name="curve"                       title="{% trans with {} from "ipaint"  %}Curve{% endtrans %}"                       class="canvas_tool_shape button_19x18 shape_curve        "></div>
+		            <div name="oval"                        title="{% trans with {} from "ipaint"  %}Oval{% endtrans %}"                        class="canvas_tool_shape button_19x18 shape_oval         "></div>
+		            <div name="rectangle"                   title="{% trans with {} from "ipaint"  %}Rectangle{% endtrans %}"                   class="canvas_tool_shape button_19x18 shape_box          "></div>
+		            <div name="rounded_rectangle"           title="{% trans with {} from "ipaint"  %}Rounded rectangle{% endtrans %}"           class="canvas_tool_shape button_19x18 shape_round_box    "></div>
+		            <div name="polyline"                    title="{% trans with {} from "ipaint"  %}Polyline{% endtrans %}"                    class="canvas_tool_shape button_19x18 shape_polyline     "></div>
+		            <div name="polygon"                     title="{% trans with {} from "ipaint"  %}Polygon{% endtrans %}"                     class="canvas_tool_shape button_19x18 shape_polygon      "></div>
+		            <div name="cardinal_spline"             title="{% trans with {} from "ipaint"  %}Cardinal-spline{% endtrans %}"             class="canvas_tool_shape button_19x18 shape_cardinal_spline"></div>
+		            <div name="closed_cardinal_spline"      title="{% trans with {} from "ipaint"  %}Closed cardinal-spline{% endtrans %}"      class="canvas_tool_shape button_19x18 shape_closed_cardinal_spline"></div>
+		            <div name="triangle"                    title="{% trans with {} from "ipaint"  %}Triangle{% endtrans %}"                    class="canvas_tool_shape button_19x18 shape_triangle     "></div>
+		            <div name="diamond"                     title="{% trans with {} from "ipaint"  %}Diamond{% endtrans %}"                     class="canvas_tool_shape button_19x18 shape_diamond      "></div>
+		            <div name="pentagon"                    title="{% trans with {} from "ipaint"  %}Pentagon{% endtrans %}"                    class="canvas_tool_shape button_19x18 shape_pentagon     "></div>
+		            <div name="hexagon"                     title="{% trans with {} from "ipaint"  %}Hexagon{% endtrans %}"                     class="canvas_tool_shape button_19x18 shape_hexagon      "></div>
+		            <div name="right_arrow"                 title="{% trans with {} from "ipaint"  %}Right arrow{% endtrans %}"                 class="canvas_tool_shape button_19x18 shape_r_arrow      "></div>
+		            <div name="left_arrow"                  title="{% trans with {} from "ipaint"  %}Left arrow{% endtrans %}"                  class="canvas_tool_shape button_19x18 shape_l_arrow      "></div>
+		            <div name="up_arrow"                    title="{% trans with {} from "ipaint"  %}Up arrow{% endtrans %}"                    class="canvas_tool_shape button_19x18 shape_u_arrow      "></div>
+		            <div name="down_arrow"                  title="{% trans with {} from "ipaint"  %}Down arrow{% endtrans %}"                  class="canvas_tool_shape button_19x18 shape_d_arrow      "></div>
+		            <div name="four_point_star"             title="{% trans with {} from "ipaint"  %}Four-point star{% endtrans %}"             class="canvas_tool_shape button_19x18 shape_4_star       "></div>
+		            <div name="five_point_star"             title="{% trans with {} from "ipaint"  %}Five-point star{% endtrans %}"             class="canvas_tool_shape button_19x18 shape_5_star       "></div>
+		            <div name="six_point_star"              title="{% trans with {} from "ipaint"  %}Six-point star{% endtrans %}"              class="canvas_tool_shape button_19x18 shape_6_star       "></div>
+		            <div name="rounded_rectangular_callout" title="{% trans with {} from "ipaint"  %}Rounded rectangular callout{% endtrans %}" class="canvas_tool_shape button_19x18 shape_baloon_box   "></div>
+		            <div name="heart"                       title="{% trans with {} from "ipaint"  %}Heart{% endtrans %}"                       class="canvas_tool_shape button_19x18 shape_heart"></div>
+		            <div name=""                            title=""                            class="canvas_tool_shape button_19x18 shape_baloon_shape "></div>
+	            </div>
+	            <div class="tb_shape_outline">
+	               <input type="checkbox" id="shape_with_outline" checked="true" /><label for="shape_with_outline" style="font:11px arial;">{% trans with {} from "ipaint"  %}Outline{% endtrans %}</label>
+	            </div>
+	            <div class="tb_shape_fill">
+	               <input type="checkbox" id="shape_with_fill" checked="true" /><label for="shape_with_fill" style="font:11px arial;">{% trans with {} from "ipaint"  %}Fill{% endtrans %}</label>
+	            </div>
+	            
+	            <div class="tb_title" style="width:auto;right:5px;text-align:right;">{% trans with {} from "ipaint"  %}Shapes{% endtrans %}&nbsp;</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         
+	         <div id="tb_size">
+	            <div class="line_width line-width selected" name="size_1px" title="1px" style="top: 5px;"><div class="size_1_px"></div></div>
+	            <div class="line_width line-width" name="size_3px" title="3px" style="top:16px;"><div class="size_3_px"></div></div>
+	            <div class="line_width line-width" name="size_5px" title="5px" style="top:27px;"><div class="size_5_px"></div></div>
+	            <div class="line_width line-width" name="size_8px" title="8px" style="top:38px;"><div class="size_8_px"></div></div>
+	            <input type="text" class="input_line_width" title="Customized line width" 
+	                   style="position:absolute;top:55px;text-align:center;left:8px;width:40px;height:12px;font:11px arial;" />
+	            <div class="tb_title">{% trans with {} from "ipaint"  %}Size{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         
+	         <div id="tb_color">
+	            <div class="swap_color"></div>
+               <div style="position:absolute;left:35px;top:10px;width:24px;height:24px;overflow:hidden;background:#ffffff;border:1px solid black;z-index:2;">
+                  <div id="fore_color" style="position:absolute;left:1px;top:1px;bottom:1px;right:1px;;overflow:hidden;background-color:#ff0000;cursor:pointer;"></div>
+               </div>
+               <div style="position:absolute;left:47px;top:20px;width:24px;height:24px;overflow:hidden;background:#ffffff;border:1px solid black;z-index:1;">
+                  <div id="back_color" style="position:absolute;left:1px;top:1px;bottom:1px;right:1px;;overflow:hidden;background-color:#0000cc;cursor:pointer;"></div>
+               </div>
+               
+               <div id="opacity_slider" class="opacity_selector slider_h">
+	               <div class='slider_bar'></div>
+	               <div class='slider_knob'></div>
+               </div>
+               
+	            <div class="tb_title">{% trans with {} from "ipaint"  %}Colors & Opacity{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         
+	         <div id="tb_ruler">
+	            <div class="show_hide_ruler">
+	               <input type="checkbox" id="show_hide_ruler" checked="true" /><label for="show_hide_ruler">{% trans with {} from "ipaint"  %}Ruler{% endtrans %}</label>
+	               <input type="checkbox" id="show_hide_grid" checked="true" /><label for="show_hide_grid">{% trans with {} from "ipaint"  %}Gridlines{% endtrans %}</label><br />
+	               <label for="ruler_canvas_width"  style="width:40px;display:inline-block;">{% trans with {} from "ipaint"  %}Width{% endtrans %}</label><input type="input" id="ruler_canvas_width" style="width:50px;font:11px arial;" /><br />
+	               <label for="ruler_canvas_height" style="width:40px;display:inline-block;">{% trans with {} from "ipaint" %}Height{% endtrans %}</label><input type="input" id="ruler_canvas_height" style="width:50px;font:11px arial;" /><br />
+	            </div>
+	            <div class="ruler_unit">
+	               <input type="radio" id="ruler_unit_px" name="ruler_unit" value="px" checked /><label for="ruler_unit_px">px</label><br />
+	               <input type="radio" id="ruler_unit_cm" name="ruler_unit" value="cm" /><label for="ruler_unit_cm">cm</label><br />
+	               <input type="radio" id="ruler_unit_in" name="ruler_unit" value="in" /><label for="ruler_unit_in">in</label>
+	            </div>
+	            <div class="tb_title">{% trans with {} from "ipaint" %}Ruler{% endtrans %}</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         <!--
+	         <div id="tb_comment">
+	            <div class="add_comment closed">
+	            </div>
+	            <div class="tb_title">Comments</div>
+	         </div>
+	         	         
+	         <div id="tb_twitter">
+	            <div class="following"></div>
+	            <div class="tb_title">Follow me</div>
+	         </div>
+	         
+	         <div id="tb_blog">
+	            <div class="myblog"></div>
+	            <div class="tb_title">My Blog</div>
+	         </div>
+	         <div class="tb_v_bar"></div>
+	         -->
+	      </div>
+	      
+	      <div id="canvas_container">
+	      </div>
+	      
+	      <div id="status_bar">
+	         <div class="status_coord">
+	            <div class="icon_24">
+	               <div class="icon_16 status_icon_coord" style="position:absolute;left:4px;top:4px"></div>
+	            </div>
+	            <div class="status_text"></div>
+	            <div class="status_seperator"></div>
+	         </div>
+
+	         <div class="status_select">
+	            <div class="icon_24">
+	               <div class="icon_16 status_icon_select" style="position:absolute;left:4px;top:4px"></div>
+	            </div>
+	            <div class="status_text"></div>
+	            <div class="status_seperator"></div>
+	         </div>
+
+	         <div class="status_dimension">
+	            <div class="icon_24">
+	               <div class="icon_16 status_icon_dimension" style="position:absolute;left:4px;top:4px"></div>
+	            </div>
+	            <div class="status_text"></div>
+	            <div class="status_seperator"></div>
+	         </div>
+
+	         <div class="status_prompt"></div>
+
+	      </div>
+	      
+	   </div>
+	   
+	   <div id="history">
+	      <div class="title">Undo / Redo</div>
+	      <div class="content"></div>
+	      <div class="toolbar">
+	         <div name="view"  class="tool view_history" title="View history in XML format"></div>
+	         <div name="undo"  class="tool undo" title="Undo"></div>
+	         <div name="redo"  class="tool redo" title="Redo"></div>
+	         <div name="remove" class="tool remove_entry" title="Remove current history entry"></div>
+	         <div name="clear" class="tool clear_history" title="Clear history"></div>
+	      </div>
+	   </div>
+	   
+	   <div id="dlg_mask" class="dialog_mask" style="visibility:hidden"></div>
+	   
+	   
+	   
+	   <div id="not_support_canvas" style="font:16px arial;height:140px;display:none;text-align:center;line-height:140px;color:Red;">
+	      Your browser doesn't support HTML5. You can download IE 9.0, Firefox or Google Chrome to view this site;
+	   </div>
+	   
+	   <div id="bucket_selection" class="referee" style="display:none;">
+         <div title="Fill with color"                    name="bucket_solid"          class="canvas_tool_shape button_19x18 tool_bucket_solid"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Fill with linear gradient color"    name="bucket_linear_grad"    class="canvas_tool_shape button_19x18 tool_bucket_linear_grad"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Fill with radial gradient color"    name="bucket_radial_grad"    class="canvas_tool_shape button_19x18 tool_bucket_radial_grad"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Fill with reflected gradient color" name="bucket_reflected_grad" class="canvas_tool_shape button_19x18 tool_bucket_reflected_grad"></div>
+         <!--
+         <div class="tool_v_bar"></div>
+         <div title="Fill with reflected diamond color"  name="bucket_diamond_grad"   class="button_19x18 tool_bucket_diamond_grad"></div>
+         -->
+	   </div>
+	   
+	   <div id="tools_selection" class="referee" style="display:none;">
+         <div title="Rectangular selection" name="select_box" class="canvas_tool_shape button_19x18 tool_select_box"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Polygon selection" name="select_polygon" class="canvas_tool_shape button_19x18 tool_select_poly"></div>
+         <!--
+         <div class="tool_v_bar"></div>
+         <div title="Polygon selection" name="select_polygon" class="button_19x18 tool_select_poly"></div>
+         -->
+	   </div>
+	   
+	   <div id="brush_selection" class="referee" style="display:none;">
+         <div title="Simple brush" name="simple_brush" class="canvas_tool_shape button_19x18 tool_brush_simple"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Ribbon brush" name="ribbon_brush" class="canvas_tool_shape button_19x18 tool_brush_ribbon"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Hair brush" name="hair_brush" class="canvas_tool_shape button_19x18 tool_brush_hair"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Long hair brush" name="long_hair_brush" class="canvas_tool_shape button_19x18 tool_brush_longhair"></div>
+         <div class="tool_v_bar"></div>
+         <div title="Square brush" name="square_brush" class="canvas_tool_shape button_19x18 tool_brush_square"></div>
+	   </div>
+	   
+	   <div style="display:none;background:#fff;position:absolute;right:0px;top:0px;width:200px;height:400px;border:1px solid black;overflow:auto;font:11px arial;z-index:2000;" id="debug_win"></div>
+	   <!--
+	   <div id="comment_pane" style="display:none;">
+         <ul id="comment-list">
+            <li>
+               <div id="comment_form" name="comment_form" class="content" style="width:500px;"><form method="post">
+                  
+                  <fieldset>
+                     <legend class="title">Leave your comment here</legend>
+
+                     <div id="error" style="text-align:center;color:red;font:13px arial;height:16px;line-height:16px;"></div>
+                     <fieldset>
+                        <legend><span style='color:red;margin-right:5px;'>*</span>Your name:</legend>
+                        <input type="text" name="name" id="name" value="" style="width:300px"/>
+                     </fieldset>
+
+                     <fieldset>
+                        <legend><span style='color:red;margin-right:5px;'>*</span>Subject:</legend>
+                        <input type="text" name="subject" id="subject" value="" style="width:600px"/>
+                     </fieldset>
+                     
+                     <fieldset>
+                        <legend><span style='color:red;margin-right:5px;'>*</span>Message:</legend>
+                        <div style="vertical-align:top;">
+                           <textarea type="text" name="message" id="message" style="width:600px;height:120px;"></textarea>
+                        </div>
+                     </fieldset>
+                     
+                     <div style="text-align:right">
+                        <button class="dlg_btn_action_apply" onclick="submitMessage();return false;">Submit</button>&nbsp;&nbsp;&nbsp;
+                     </div>
+                  </fieldset>
+                  
+               </form></div>         
+            </li>
+         </ul>
+         <div class="close_button"></div>
+	   </div>
+	   --> 
+{% endblock %}

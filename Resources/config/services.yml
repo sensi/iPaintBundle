@@ -1,0 +1,7 @@
+parameters:
+#    m3i_paint.example.class: M3\Bundle\iPaintBundle\Example
+
+services:
+#    m3i_paint.example:
+#        class: %m3i_paint.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
