@@ -24,7 +24,7 @@ This bundle is released under the BSD-License. See in License.txt for more infos
     {
         $bundles = array(
             // ...
-            new Knp\Bundle\TranslatorBundle\KnpTranslatorBundle,
+            new M3\Bundle\iPaintBundle\M3iPaintBundle(),
             // ...
         );
         // ...
@@ -32,13 +32,13 @@ This bundle is released under the BSD-License. See in License.txt for more infos
     
     ```
 
-4.  Add the Knp namespace to your autoloader
+4.  Add the M3 namespace to your autoloader
 
     ```php
 
     // app/autoload.php
     $loader->registerNamespaces(array(
-        'Knp' => __DIR__.'/../vendor/bundles',
+       'M3'	=> __DIR__ . '/../vendor/m3byte/src',
         // your other namespaces
     );
 
