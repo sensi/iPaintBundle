@@ -1,21 +1,35 @@
 # M3iPaintBundle :: Includes iPaint into symfony2.
 
-Author: Michael Ofner <michaelofner@me.com>
-Created at: 22.02.2012
+Author: Michael Ofner <michaelofner@me.com>    
+Created at: 22.02.2012    
+Lastupdate: 03.03.2012   
+
 
 Forked from the amazing iPaint Editor developed by Yubo Dong <swidget@gmail.com>.
-This bundle is released under the BSD-License. See in License.txt for more infos.
+See in License.txt for more infos.
 
 
 ## Installation
 
 
-1. Install via git submodule
+1.1 Install via git submodule
+	``` bash 
+	
+    git submodule add git://github.com/sensi/iPaintBundle.git vendor/m3byte/src/M3/Bundle/iPaintBundle
 
-2. Add to deps file
+    ```
+			
+1.2 Or install via deps file
 
+	``` 
+	
+    [M3iPaintBundle]
+	git=git://github.com/sensi/iPaintBundle.git
+	target=/m3byte/src/M3/Bundle/iPaintBundle
+    
+    ```
 
-3.  Add the bundle to your `AppKernel` class
+2.  Add the bundle to your `AppKernel` class
 
     ``` php
 
@@ -32,7 +46,7 @@ This bundle is released under the BSD-License. See in License.txt for more infos
     
     ```
 
-4.  Add the M3 namespace to your autoloader
+3.  Add the M3 namespace to your autoloader
 
     ```php
 
@@ -44,7 +58,7 @@ This bundle is released under the BSD-License. See in License.txt for more infos
 
     ```
 
-5.  Add routing
+4.  Add routing
 
     ``` yaml
 
@@ -61,7 +75,7 @@ This bundle is released under the BSD-License. See in License.txt for more infos
     Name                     Method  Pattern
     m3ipaint_editor			  GET    /m3ipaint
 
-6. Run at command line:
+5. Run at command line:
 	``` command-line
 	php app/console assets:install web/
 	
@@ -71,12 +85,18 @@ This bundle is released under the BSD-License. See in License.txt for more infos
 ## Usage
 
 After installation you can access the editor with the configured route. 
-All images get saved into the web/drawings/ folder.
+All images get saved into the web/images/drawings/{username} folder.
+
+## Translation
+
+The iPaint Bundle is currently available in english and german. 
+But the javascript sources are only in static english. Same with the origin html dialog boxes...
 
 ## Todo
 
 * Drawings folder should be customizeable via config
 * Refactor the image save, load and share logic. Make them available throw symfony service container...
+* Save all images into the current logged in user's folder. => /web/images/drawings/dummyuser/
 
 
 
